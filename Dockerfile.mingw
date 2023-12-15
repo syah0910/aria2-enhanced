@@ -13,8 +13,10 @@ FROM ubuntu:22.04
 
 MAINTAINER Tatsuhiro Tsujikawa
 
-# Change HOST to x86_64-w64-mingw32 to build 64-bit binary
-ARG HOST=i686-w64-mingw32
+# Uncomment either one of the HOST Args then put a comment to the other HOST Args to build 32-bit/64-bit binary.
+# i686-w64-mingw32 is 32-bit; x86_64-w64-mingw32 is 64-bit.
+# ARG HOST=i686-w64-mingw32
+ARG HOST=x86_64-w64-mingw32
 
 # It would be better to use nearest ubuntu archive mirror for faster
 # downloads.
