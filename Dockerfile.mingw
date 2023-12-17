@@ -38,6 +38,7 @@ RUN apt-get update && \
 
 RUN curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.bz2 && \
     curl -L -O https://www.sqlite.org/2023/sqlite-autoconf-3430100.tar.gz && \
+    curl -L -O https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz && \
     curl -L -O https://tukaani.org/xz/xz-5.4.5.tar.gz && \
     curl -L -O https://libssh2.org/download/libssh2-1.11.0.tar.bz2
 
@@ -119,6 +120,17 @@ RUN tar xf libssh2-1.11.0.tar.bz2 && \
         --build=`dpkg-architecture -qDEB_BUILD_GNU_TYPE` \
         LIBS="-lws2_32" && \
     make -j$(nproc) install
+
+RUN tar xf libressl-3.8.2.tar.gz && \
+    cd libressl-3.8.2 && \
+    ./configure \
+        --host=$HOST \
+        --prefix=/usr/local/$HOST \
+        --enable-silent-rules \
+        --enable-static \
+        --disable-shared \
+        --with-openssldir=/etc/ssl && \
+    make -j$(nproc) install_sw
 
 ARG ARIA2_VERSION=master
 ARG ARIA2_REF=refs/heads/master
