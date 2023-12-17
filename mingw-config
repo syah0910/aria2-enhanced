@@ -73,6 +73,7 @@ test -z "$PREFIX" && PREFIX=/usr/local/$HOST
     --with-libxz \
     --without-libgmp \
     --with-libssh2 \
+    --with-libressl \
     --without-libgcrypt \
     --without-libnettle \
     --with-cppunit-prefix=$PREFIX \
