@@ -45,7 +45,9 @@ RUN curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_5_0/ex
     curl -L -O https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz && \
     curl -L -o "zlib-ng-2.1.5.zip" https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.1.5.zip && \
     curl -L -O https://tukaani.org/xz/xz-5.4.5.tar.gz && \
-    curl -L -O https://libssh2.org/download/libssh2-1.11.0.tar.bz2
+    curl -L -O https://libssh2.org/download/libssh2-1.11.0.tar.bz2 && \
+    curl -L -O https://github.com/ninja-build/ninja/releases/download/v1.11.1/ninja-linux.zip && \
+    unzip -d /usr/local/bin "ninja-linux.zip"
 
 # RUN tar xf gmp-6.3.0.tar.xz && \
 #     cd gmp-6.3.0 && \
