@@ -3,6 +3,10 @@
 #
 # $ sudo docker build -t aria2-mingw - < Dockerfile.mingw
 #
+# Force build:
+#
+# $ sudo docker build --pull --no-cache -t aria2-mingw - < Dockerfile.mingw
+#
 # After successful build, windows binary is located at
 # /aria2/src/aria2c.exe.  You can copy the binary using following
 # commands:
