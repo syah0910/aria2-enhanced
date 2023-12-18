@@ -43,6 +43,7 @@ RUN apt-get update && \
 RUN curl -L -O https://github.com/libexpat/libexpat/releases/download/R_2_5_0/expat-2.5.0.tar.bz2 && \
     curl -L -O https://www.sqlite.org/2023/sqlite-autoconf-3430100.tar.gz && \
     curl -L -O https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.8.2.tar.gz && \
+    curl -L -o "zlib-ng-2.1.5.zip" https://github.com/zlib-ng/zlib-ng/archive/refs/tags/2.1.5.zip && \
     curl -L -O https://tukaani.org/xz/xz-5.4.5.tar.gz && \
     curl -L -O https://libssh2.org/download/libssh2-1.11.0.tar.bz2
 
@@ -101,6 +102,22 @@ RUN tar xf xz-5.4.5.tar.gz && \
 #        --includedir=/usr/local/$HOST/include \
 #        --static && \
 #    make -j$(nproc) install
+
+RUN unzip zlib-ng-2.1.5.zip && \
+    cd zlib-ng-2.1.5 && \
+    cmake -B build \
+      -G Ninja \
+      -DBUILD_SHARED_LIBS=OFF \
+      -DZLIB_COMPAT=ON \
+      -DCMAKE_SYSTEM_NAME="Windows" \
+      -DCMAKE_INSTALL_PREFIX="/usr/local/$HOST" \
+      -DCMAKE_C_COMPILER="$HOST-gcc" \
+      -DCMAKE_CXX_COMPILER="$HOST-g++" \
+	  # Change DCMAKE_SYSTEM_PROCESSOR value to i686 for 32-bit build
+      -DCMAKE_SYSTEM_PROCESSOR="x86_64" \
+      -DWITH_GTEST=OFF && \
+    cmake --build build && \
+    cmake --install build
 
 # RUN tar xf c-ares-1.19.1.tar.gz && \
 #     cd c-ares-1.19.1 && \
