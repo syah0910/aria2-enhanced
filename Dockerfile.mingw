@@ -31,7 +31,7 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         make binutils autoconf automake autotools-dev libtool \
         patch ca-certificates \
-        pkg-config git curl dpkg-dev gcc-mingw-w64 g++-mingw-w64 \
+        pkg-config git curl unzip cmake dpkg-dev gcc-mingw-w64 g++-mingw-w64 \
         autopoint libcppunit-dev libxml2-dev libgcrypt20-dev lzip \
         python3-docutils
 
