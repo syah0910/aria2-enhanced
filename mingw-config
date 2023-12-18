@@ -66,6 +66,7 @@ test -z "$PREFIX" && PREFIX=/usr/local/$HOST
     --disable-bittorrent \
     --without-libcares \
     --without-gnutls \
+    --without-wintls \
     --with-openssl \
     --with-sqlite3 \
     --without-libxml2 \
