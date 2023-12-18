@@ -115,7 +115,7 @@ RUN unzip zlib-ng-2.1.5.zip && \
       -DCMAKE_INSTALL_PREFIX="/usr/local/$HOST" \
       -DCMAKE_C_COMPILER="$HOST-gcc" \
       -DCMAKE_CXX_COMPILER="$HOST-g++" \
-	  # Change DCMAKE_SYSTEM_PROCESSOR value to i686 for 32-bit build
+      # Change DCMAKE_SYSTEM_PROCESSOR value to i686 for 32-bit build
       -DCMAKE_SYSTEM_PROCESSOR="x86_64" \
       -DWITH_GTEST=OFF && \
     cmake --build build && \
